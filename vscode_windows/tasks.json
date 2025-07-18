@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "powercues_build_task",
+      "type": "shell",
+      "command": "${workspaceFolder}\\build\\build.bat",
+    }
+  ]
+}

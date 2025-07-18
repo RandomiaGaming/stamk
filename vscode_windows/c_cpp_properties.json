@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Default CPP Properties",
+            "includePath": [
+                "${workspaceFolder}/src/**"
+            ],
+            "compilerPath": "cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "defines": [
+                "WINDOWS",
+                "_ITERATOR_DEBUG_LEVEL=0",
+                "UNICODE",
+                "_UNICODE"
+            ]
+        }
+    ],
+    "version": 4
+}
