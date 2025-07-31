@@ -7,7 +7,7 @@ set "scriptdir=%~dp0"
 where python >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
-    echo MiniBuild requires python to run but it could not be found.
+    echo Stamk requires python but it could not be found.
     echo You may need to edit your PATH or download it from https://www.python.org/downloads/
     echo.
     pause
@@ -24,5 +24,5 @@ goto argLoopContinue
 :argLoopBreak
 
 :: Launch stamk.py and return it's status code
-python "%scriptdir%..\stamk.py" %args%
+python "%scriptdir%..\..\src\stamk.py" %args%
 exit /b %errorlevel%

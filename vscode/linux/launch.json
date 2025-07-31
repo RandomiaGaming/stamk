@@ -2,12 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "PowerCues (Build and Debug)",
+      "name": "Stamk (Build and Debug)",
       "type": "cppvsdbg",
       "request": "launch",
       "cwd": "${workspaceFolder}/bin",
-      "program": "${workspaceFolder}/bin/powercues.exe",
-      "preLaunchTask": "powercues_build_task",
+      "program": "${workspaceFolder}/bin/*",
+      "preLaunchTask": "stamk_build_task"
     }
   ]
 }

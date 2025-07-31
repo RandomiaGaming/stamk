@@ -1,14 +1,14 @@
 {
     "configurations": [
         {
-            "name": "GCC + musl",
+            "name": "Musl Gcc",
             "includePath": [
                 "${workspaceFolder}/src/**",
                 "/usr/include",
                 "/usr/local/include",
                 "/usr/include/c++/v1"
             ],
-            "compilerPath": "/usr/bin/musl-gcc",
+            "compilerPath": "/",
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "linux-gcc-x64",

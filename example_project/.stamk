@@ -1,0 +1,9 @@
+# Sources
+source:src/**/*.cpp
+source:src/**/*.c
+
+# Assets
+asset:assets/**/*
+
+# Project Name
+project:example

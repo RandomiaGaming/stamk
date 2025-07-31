@@ -4,7 +4,7 @@ set -eu
 # Ensure Python is installed
 if ! command -v python3 >/dev/null 2>&1; then
     echo
-    echo "MiniBuild requires python to run but it could not be found."
+    echo "Stamk requires python but it could not be found."
     echo "You may need to edit your PATH or download it from https://www.python.org/downloads/"
     echo
     echo "Press Enter to exit..."
@@ -17,5 +17,5 @@ if ! command -v python3 >/dev/null 2>&1; then
 fi
 
 # Launch stamk.py and return its status code
-stamkDir=$(cd "$(dirname "$0")/../" && pwd)
-exec python3 "$stamkDir/stamk.py" "$@"
+stamkDir=$(cd "$(dirname "$0")/../../" && pwd)
+exec python3 "$stamkDir/src/stamk.py" "$@"

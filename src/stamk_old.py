@@ -2,50 +2,15 @@ import sys
 import platform
 import os
 import sys
-import subprocess
+import lib_stamk
 import shutil
 from pathlib import Path
 
 WINDOWS=(platform.system() == "Windows")
 RELEASE=("release" in [ arg.lower() for arg in sys.argv[1:] ])
-PROJROOT=(os.path.dirname(os.path.dirname(os.path.abspath(sys.argv[0]))))
+PROJROOT=(os.path.abspath(os.getcwd()))
 
 muslLicenseUrl="https://git.musl-libc.org/cgit/musl/plain/COPYRIGHT"
-
-def WriteFile(filePath, contents, binary=False):
-    filePath = os.path.abspath(filePath)
-    dirPath = os.path.dirname(filePath)
-    os.makedirs(dirPath, exist_ok=True)
-    with open(filePath, "wb" if binary else "w", encoding=(None if binary else "UTF-8")) as file:
-        file.write(contents)
-
-def ReadFile(filePath, defaultContents=None, binary=False):
-    filePath = os.path.abspath(filePath)
-    if not os.path.exists(filePath):
-        if defaultContents != None:
-            return defaultContents
-    with open(filePath, "rb" if binary else "r", encoding=(None if binary else "UTF-8")) as file:
-        return file.read()
-
-def RunCommand(command, echo=False, capture=False, input=None, check=True, env=None):
-    result = subprocess.run(command, capture_output=(not echo), input=input, check=check, shell=True, text=True,)
-    if capture and not check:
-        return (result.stdout + result.stderr).strip(), result.returncode
-    elif capture:
-        return (result.stdout + result.stderr).strip()
-    elif not check:
-        return result.returncode
-    else:
-        return
-
-def RunVsDevCommand(command, echo=False, capture=False, input=None, check=True):
-    vsdevcmd_path = "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\VsDevCmd.bat"
-    if not os.path.exists(vsdevcmd_path):
-        raise Exception("VsDevCmd.bat could not be found. You may need to install Visual Studio or add the \"Desktop development with c++\" workload.")
-    fullCommand = f"cmd /c \"\"{vsdevcmd_path}\" -arch=x64 -no_logo && {command}\""
-    env = os.environ.copy()
-    env["VSCMD_SKIP_SENDTELEMETRY"] = "1"
-    return RunCommand(fullCommand, echo=echo, capture=capture, input=input, check=check, env=env)
 
 def LinkVsCodeDir():
     vscodeDir = os.path.join(PROJROOT, ".vscode")
@@ -142,47 +107,6 @@ def InstallDependencies():
         objectPaths.append(opensslAPath)
         includeDirs.append(opensslIncludePath)
     return includeDirs, objectPaths
-
-def GatherPaths(root=PROJROOT, targetDirs = None, ignoreDirs = None, targetPaths = None, ignorePaths = None, targetExts = None, ignoreExts = None):
-    if targetExts != None and ignoreExts != None:
-        raise Exception("Only targetExts or ignoreExts may be set not both.")
-    root = os.path.abspath(root)
-    targetExts = [ (f".{targetExt}" if not targetExt.startswith(".") else targetExt) for targetExt in targetExts ] if targetExts != None else None
-    ignoreExts = [ (f".{ignoreExt}" if not ignoreExt.startswith(".") else ignoreExt) for ignoreExt in ignoreExts ] if ignoreExts != None else None
-    targetDirs = [ os.path.abspath(targetDir) for targetDir in targetDirs ] if targetDirs != None else []
-    ignoreDirs = [ os.path.abspath(ignoreDir) for ignoreDir in ignoreDirs ] if ignoreDirs != None else []
-    targetPaths = [ os.path.abspath(targetPath) for targetPath in targetPaths ] if targetPaths != None else []
-    ignorePaths = [ os.path.abspath(ignorePath) for ignorePath in ignorePaths ] if ignorePaths != None else []
-    outputPaths = set()
-    rootSubPaths = set()
-    for dirPath, dirNames, fileNames in os.walk(root):
-        for fileName in fileNames:
-            filePath = os.path.join(dirPath, fileName)
-            rootSubPaths.add(filePath)
-    for filePath in rootSubPaths:
-        fileExt = os.path.splitext(filePath)[1]
-        if filePath in ignorePaths:
-            continue
-        elif filePath in targetPaths:
-            outputPaths.add(filePath)
-        elif any(filePath.startswith(ignoreDir) for ignoreDir in ignoreDirs):
-            continue
-        elif any(filePath.startswith(targetDir) for targetDir in targetDirs):
-            if targetExts != None:
-                if any(fileExt == targetExt for targetExt in targetExts):
-                    outputPaths.add(filePath)
-                else:
-                    continue
-            elif ignoreExts != None:
-                if not any(fileExt == ignoreExt for ignoreExt in ignoreExts):
-                    outputPaths.add(filePath)
-                else:
-                    continue
-            else:
-                outputPaths.add(filePath)
-        else:
-            continue
-    return list(outputPaths)
 
 def PreCompileAssets(assetPaths):
     objDir = os.path.join(PROJROOT, "obj")

@@ -1,0 +1,20 @@
+Stamk:
+Stamk (short for static make) is a python based C and C++ build system designed for Windows, Mac, and Linux.
+It's primary goal is to make it easy to build standalone static applications which depend only upon the kernel of their respective operating system.
+
+Linux:
+On Linux Stamk builds depend only on the linux kernel itself and use syscalls to communicate with the OS.
+Linux builds are created using the musl compiler and musl standard library.
+This is because statically linking the standard library from gcc is considered unsafe and musl is specifically designed for this purpose.
+
+Windows:
+On Windows Stamk builds depend only on ntdll.dll, KERNEL32.dll, and KERNELBASE.dll.
+Windows builds are created using the UCRT library (Microsoft Universal C Runtime).
+So why all those DLLs in my static build?
+ntdll.dll is injected by the Windows kernel at load time and even removing it from your exe's import table doesn't prevent this.
+As for KERNEL32.dll and KERNELBASE.dll these are technically optional but removing them means calling undocumented API's in ntdll.dll.
+These function signatures change frequently without warning and ntdll.dll has no documentation making it incredibly painful to develop an app this way.
+
+Mac:
+Mac builds are currently unsupported for the very simple reason that I am too poor to afford a Mac at this time.
+If anyone would like to gift me a MacBook that would be epic LOL :)

@@ -6,7 +6,7 @@
       "type": "cppvsdbg",
       "request": "launch",
       "cwd": "${workspaceFolder}/bin",
-      "program": "${workspaceFolder}/bin/powercues",
+      "program": "${workspaceFolder}/bin/powercues.exe",
       "preLaunchTask": "powercues_build_task"
     }
   ]
