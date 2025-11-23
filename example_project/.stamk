@@ -1,9 +1,2 @@
-# Sources
-source:src/**/*.cpp
+binary:stamk_example
 source:src/**/*.c
-
-# Assets
-asset:assets/**/*
-
-# Project Name
-project:example
