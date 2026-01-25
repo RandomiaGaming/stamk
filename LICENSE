@@ -1,17 +1,21 @@
-Copyright © 2025 Jacobi Aarons Christ
+MIT License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to use, execute, and modify the Software for personal, academic, or commercial purposes, with or without attribution.
+Copyright 2026 Jacobi Christ
 
-The following conditions apply:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-1. Redistribution of the Software, whether modified or unmodified, in any form (including via upload, packaging, resale, or hosting separate copies) is strictly prohibited. The Software may only be obtained by cloning or linking directly to the original repository at: https://github.com/RandomiaGaming/stamk.git or git@github.com:RandomiaGaming/stamk.git
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-2. Selling the Software, either as a standalone product or as part of a larger product, is prohibited.
-
-3. Users may create and distribute tools, build systems, or other works that depend on or invoke the Software, provided that they do not include or bundle the Software itself, and instead instruct users to obtain it from the original repository.
-
-4. Claiming authorship or ownership of the original Software is prohibited.
-
-5. The Software and all of its components are the exclusive copyright of Jacobi Aarons Christ.
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
